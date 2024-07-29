@@ -1,11 +1,15 @@
 .cproject
 .project
 .pydevproject
+.vscode
 cmake_install.cmake
 build/
+devel/
 bin/
 lib/
 msg_gen/
 srv_gen/
 *.pyc
 *~
+.cache
+.catkin_tools
