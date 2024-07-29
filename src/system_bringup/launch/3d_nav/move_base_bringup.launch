@@ -1,0 +1,22 @@
+<launch>
+
+    <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen" clear_params="true">
+        <rosparam file="$(find system_bringup)/config/move_base_config/costmap_common_params.yaml" command="load" ns="global_costmap" />
+        <rosparam file="$(find system_bringup)/config/move_base_config/costmap_common_params.yaml" command="load" ns="local_costmap" />
+        <rosparam file="$(find system_bringup)/config/move_base_config/local_costmap_params.yaml" command="load" />
+        <rosparam file="$(find system_bringup)/config/move_base_config/global_costmap_params.yaml" command="load" />
+        <rosparam file="$(find system_bringup)/config/move_base_config/base_local_planner_params.yaml" command="load" />
+        <param name="planner_patience" type="double" value="5.0" />
+        <param name="controller_patience" type="double" value="15.0" />
+        <param name="oscillation_timeout" type="double" value="0.0" />
+        <param name="oscillation_distance" type="double" value="0.5" />
+
+        <param name="max_planning_retries" type="int" value="-1" />
+
+        <param name="recovery_behavior_enabled" type="bool" value="true" />
+        <param name="base_global_planner" value="navfn/NavfnROS" />
+        <param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS" />
+
+    </node>
+
+</launch>

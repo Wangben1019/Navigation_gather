@@ -1,0 +1,14 @@
+<launch>
+    <include file="$(find lslidar_driver)/launch/lslidar_serial.launch" />
+
+    <include file="$(find rf2o_laser_odometry)/launch/rf2o_laser_odometry.launch" />
+
+    <include file="$(find system_bringup)/launch/2d_nav/gmapping_lidar.launch" />
+
+    <include file="$(find system_bringup)/launch/2d_nav/move_base_bringup.launch" />
+
+    <!-- <node pkg="nav_launch_pkg" type="transmit_chassis_node" name="transmit_chassis_node" output="screen" /> -->
+
+    <node launch-prefix="nice" pkg="rviz" type="rviz" name="rvizsystem" args="-d $(find system_bringup)/rviz/system_2d.rviz" />
+</launch>
+

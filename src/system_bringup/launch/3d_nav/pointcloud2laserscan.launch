@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+
+<launch>
+    <node pkg="pointcloud_to_laserscan" type="pointcloud_to_laserscan_node" name="pointcloud_to_laserscan">
+        <remap from="cloud_in" to="/cloud_registered_Livox"/> 
+        
+        <param name="target_frame" value="livox_frame" />
+        <param name="transform_tolerance" value="0.01" />
+        <param name="min_height" value="-0.4" />
+        <param name="max_height" value="1" />
+        <param name="angle_min" value="-3.1425926" />
+        <param name="angle_max" value="3.1415926" />
+        <param name="angle_increment" value="0.007" />
+        <param name="scan_time" value="0.1" />
+        <param name="range_min" value="0.2" />
+        <param name="range_max" value="100" />
+        <param name="use_inf" value="true" />
+        <param name="inf_epsilon" value="1.0" />
+        <param name="concurrency_level" value="1" /> 
+    </node>
+
+</launch>

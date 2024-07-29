@@ -1,0 +1,20 @@
+<launch>
+    <include file="$(find livox_ros_driver2)/launch/msg_MID360.launch" />
+
+    <include file="$(find fast_lio)/launch/mapping_mid360_distributed.launch" />
+
+    <node pkg="system_bringup" type="receive_odom" name="receive_odom" output="screen" />
+
+    <node pkg="tf" type="static_transform_publisher" name="LidarVehicleTransPublisher" args="0 0 0 0 0 0 base_link_ugv livox_frame 1000"/>
+
+    <include file="$(find system_bringup)/launch/3d_nav/pointcloud2laserscan.launch" />
+
+    <include file="$(find system_bringup)/launch/3d_nav/gmapping_lidar.launch" />
+
+    <include file="$(find system_bringup)/launch/3d_nav/move_base_bringup.launch" />
+
+    <!-- <node pkg="user_package" type="control_chassis" name="control_chassis" output="screen" /> -->
+
+    <node launch-prefix="nice" pkg="rviz" type="rviz" name="rvizsystem" args="-d $(find system_bringup)/rviz/system_3d.rviz" />
+</launch>
+

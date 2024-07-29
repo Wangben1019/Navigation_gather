@@ -1,0 +1,52 @@
+DWAPlannerROS:
+
+# Robot Configuration Parameters
+  max_vel_x: 0.5 # X 方向最大速度  0.3
+  min_vel_x: 0.1 # X 方向最小速速 -0.05
+  min_vel_y: 0
+  max_vel_y: 0
+  max_vel_trans: 3.0      #1.0
+  min_vel_trans: 0.01     #0.01
+  max_vel_theta: 1.0      #1.0s
+  min_vel_theta: -0.1    #-0.01
+  theta_stopped_vel: 0.1
+  trans_stopped_vel: 0.1
+  # min_in_place_vel_theta: 0.5
+
+  acc_lim_x: 3 # X 加速限制  2.5
+  acc_lim_y: 0.0 # Y 加速限制
+  acc_lim_theta: 6.0 # 角速度加速限制
+  acc_lim_trans: 2.5
+
+# Goal Tolerance Parameters，目标公差
+  xy_goal_tolerance: 0.1 #0.05 
+  yaw_goal_tolerance: 0.2 #0.1s
+  latch_xy_goal_tolerance: false
+  #path_distance_bias: 0.8
+  #goal_distance_bias: 0.4
+
+# Differential-drive robot configuration
+# 是否是全向移动机器人
+  holonomic_robot: false
+
+# Forward Simulation Parameters，前进模拟参数
+  sim_time: 1.7
+  vx_samples: 3
+  vy_samples: 1
+  vtheta_samples: 20
+  # sim_granularity: 0.05
+  # dwa: true
+
+  path_distance_bias: 32.0
+  goal_distance_bias: 24.0
+  occdist_scale: 0.01
+  forward_point_distance: 0.325
+  stop_time_buffer: 0.2
+  scaling_speed: 0.25
+  max_scaling_factor: 0.2
+
+  oscillation_reset_dist: 1.05
+
+  publish_traj_pc: true
+  publish_cost_grid_pc: true
+  global_frame_id: odom_ugv
