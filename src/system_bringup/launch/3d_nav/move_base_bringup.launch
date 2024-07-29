@@ -5,7 +5,8 @@
         <rosparam file="$(find system_bringup)/config/move_base_config/costmap_common_params.yaml" command="load" ns="local_costmap" />
         <rosparam file="$(find system_bringup)/config/move_base_config/local_costmap_params.yaml" command="load" />
         <rosparam file="$(find system_bringup)/config/move_base_config/global_costmap_params.yaml" command="load" />
-        <rosparam file="$(find system_bringup)/config/move_base_config/base_local_planner_params.yaml" command="load" />
+        <!-- <rosparam file="$(find system_bringup)/config/move_base_config/base_local_planner_params.yaml" command="load" /> -->
+        <rosparam file="$(find system_bringup)/config/move_base_config/teb_local_planner.yaml" command="load" />
         <param name="planner_patience" type="double" value="5.0" />
         <param name="controller_patience" type="double" value="15.0" />
         <param name="oscillation_timeout" type="double" value="0.0" />
@@ -13,9 +14,12 @@
 
         <param name="max_planning_retries" type="int" value="-1" />
 
+        <param name="odom_topic" type="string" value="/Odometry" />
+
         <param name="recovery_behavior_enabled" type="bool" value="true" />
-        <param name="base_global_planner" value="navfn/NavfnROS" />
-        <param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS" />
+        <param name="base_global_planner" value="global_planner/GlobalPlanner" />
+        <!-- <param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS" /> -->
+        <param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS" />
 
     </node>
 

@@ -25,15 +25,15 @@ bool Navigation_Mode_now = true;
 sensor_msgs::Joy joy_laser;
 
 // std::shared_ptr<control_chassis_ns::control_chassis> vcom_trinsmit_speed(new control_chassis_ns::control_chassis());
-void OdometryAndCmd_VelHandler(const geometry_msgs::TwistStamped::ConstPtr& cmd_vel)
+void OdometryAndCmd_VelHandler(const geometry_msgs::Twist::ConstPtr& cmd_vel)
 {
     Robot_Chassis_Exp_ Robot_Chassis_Exp;
     VCOMCOMM vcom_user;
     QByteArray serial_data_user;
     
-    Robot_Chassis_Exp.Expect_Speed_X = cmd_vel->twist.linear.x;
-    Robot_Chassis_Exp.Expect_Speed_Y = cmd_vel->twist.linear.y;
-    Robot_Chassis_Exp.Expect_Speed_Yaw = cmd_vel->twist.angular.z;
+    Robot_Chassis_Exp.Expect_Speed_X = cmd_vel->linear.x;
+    Robot_Chassis_Exp.Expect_Speed_Y = cmd_vel->linear.y;
+    Robot_Chassis_Exp.Expect_Speed_Yaw = cmd_vel->angular.z;
 
     // robot_expect = (Robot_Chassis_Exp_ *)serial_data_user.data();
     serial_data_user.append((char *)&Robot_Chassis_Exp, sizeof(Robot_Chassis_Exp_));
@@ -59,7 +59,7 @@ void joystickHandler(const sensor_msgs::Joy::ConstPtr& joy)
 
 
     // robot_expect = (Robot_Chassis_Exp_ *)serial_data_user.data();
-    serial_data_user.append((char *)&Robot_Chassis_Exp, sizeof(Robot_Chassis_Exp_));
+    serial_data_user.append((char *)&Robot_Chassis_Exp, sizeof(Remote_Chassis_Exp_));
     ROS_INFO("X = %f,Y = %f,YAW = %f", Robot_Chassis_Exp.remote_speed_x, Robot_Chassis_Exp.remote_speed_y, Robot_Chassis_Exp.remote_speed_yaw);
     ROS_INFO("stop = %d,switch = %f", Robot_Chassis_Exp.remote_stop_flag, Robot_Chassis_Exp.switch_remote);
 
@@ -74,7 +74,7 @@ int main(int argc, char *argv[])
 
     nh.getParam("Navigation_Mode_now", Navigation_Mode_now);
 
-    ros::Subscriber subCmd_Vel = nh.subscribe<geometry_msgs::TwistStamped>("/cmd_vel", 10, OdometryAndCmd_VelHandler);
+    ros::Subscriber subCmd_Vel = nh.subscribe<geometry_msgs::Twist>("/cmd_vel", 10, OdometryAndCmd_VelHandler);
 
     ros::Subscriber subJoystick = nh.subscribe<sensor_msgs::Joy> ("/joy", 5, joystickHandler);
 

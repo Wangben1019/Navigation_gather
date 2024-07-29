@@ -67,14 +67,14 @@ set(move_base_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("TRUE" STREQUAL "TRUE")
-  set(move_base_SOURCE_PREFIX /home/wang/2dnav_ws/src/navigation/move_base)
-  set(move_base_DEVEL_PREFIX /home/wang/2dnav_ws/devel)
+  set(move_base_SOURCE_PREFIX /home/uaspc01/Navigation_gather/src/navigation/move_base)
+  set(move_base_DEVEL_PREFIX /home/uaspc01/Navigation_gather/devel)
   set(move_base_INSTALL_PREFIX "")
   set(move_base_PREFIX ${move_base_DEVEL_PREFIX})
 else()
   set(move_base_SOURCE_PREFIX "")
   set(move_base_DEVEL_PREFIX "")
-  set(move_base_INSTALL_PREFIX /home/wang/2dnav_ws/install)
+  set(move_base_INSTALL_PREFIX /home/uaspc01/Navigation_gather/install)
   set(move_base_PREFIX ${move_base_INSTALL_PREFIX})
 endif()
 
@@ -91,9 +91,9 @@ endif()
 # flag project as catkin-based to distinguish if a find_package()-ed project is a catkin project
 set(move_base_FOUND_CATKIN_PROJECT TRUE)
 
-if(NOT "/home/wang/2dnav_ws/devel/include;/home/wang/2dnav_ws/src/navigation/move_base/include;/usr/include/eigen3 " STREQUAL " ")
+if(NOT "/home/uaspc01/Navigation_gather/devel/include;/home/uaspc01/Navigation_gather/src/navigation/move_base/include;/usr/include/eigen3 " STREQUAL " ")
   set(move_base_INCLUDE_DIRS "")
-  set(_include_dirs "/home/wang/2dnav_ws/devel/include;/home/wang/2dnav_ws/src/navigation/move_base/include;/usr/include/eigen3")
+  set(_include_dirs "/home/uaspc01/Navigation_gather/devel/include;/home/uaspc01/Navigation_gather/src/navigation/move_base/include;/usr/include/eigen3")
   if(NOT " " STREQUAL " ")
     set(_report "Check the issue tracker '' and consider creating a ticket if the problem has not been reported yet.")
   elseif(NOT "http://wiki.ros.org/move_base " STREQUAL " ")
@@ -110,7 +110,7 @@ if(NOT "/home/wang/2dnav_ws/devel/include;/home/wang/2dnav_ws/src/navigation/mov
         message(FATAL_ERROR "Project 'move_base' specifies '${idir}' as an include dir, which is not found.  It does not exist in '${include}'.  ${_report}")
       endif()
     else()
-      message(FATAL_ERROR "Project 'move_base' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/wang/2dnav_ws/src/navigation/move_base/${idir}'.  ${_report}")
+      message(FATAL_ERROR "Project 'move_base' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/uaspc01/Navigation_gather/src/navigation/move_base/${idir}'.  ${_report}")
     endif()
     _list_append_unique(move_base_INCLUDE_DIRS ${include})
   endforeach()
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/wang/2dnav_ws/devel/lib;/home/wang/2dnav_ws/devel/lib;/opt/ros/noetic/lib)
+    foreach(path /home/uaspc01/Navigation_gather/devel/lib;/home/uaspc01/Navigation_gather/devel/lib;/opt/ros/noetic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

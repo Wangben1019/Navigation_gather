@@ -14,11 +14,18 @@
 #include "std_msgs/Int32.h"
 
 int cnt;
-nav_msgs::Odometry receive_odom_rviz;
+nav_msgs::Odometry Pub_Odom;
+ros::Publisher pubLioOdom;
 
 void odom_callback(const nav_msgs::Odometry::ConstPtr &pose_msg)
 {
-    receive_odom_rviz = *pose_msg;
+    Pub_Odom = *pose_msg;
+
+    Pub_Odom.header.frame_id = "odom_ugv";
+    Pub_Odom.child_frame_id = "base_link_ugv";
+
+    pubLioOdom.publish(Pub_Odom);
+
     static tf::TransformBroadcaster br;
     tf::Transform transform;
     tf::Quaternion q;
@@ -51,6 +58,9 @@ int main(int argc, char *argv[])
     ros::Subscriber sub_vio = nh.subscribe("/Odometry", 100, odom_callback);
 
     ros::Subscriber sub_debug = nh.subscribe("debug_node", 5, debug_callback);
+
+    pubLioOdom = nh.advertise<nav_msgs::Odometry> 
+            ("/odom", 100000);
 
     // ros::Publisher pub_odom_rviz = nh.advertise<nav_msgs::Odometry>("/odom", 5);
 

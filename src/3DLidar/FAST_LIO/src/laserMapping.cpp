@@ -712,8 +712,8 @@ void publish_odometry(const ros::Publisher & pubOdomAftMapped)
     odomAftMapped.child_frame_id = "base_link_3d";
     odomAftMapped.header.stamp = ros::Time().fromSec(lidar_end_time);// ros::Time().fromSec(lidar_end_time);
     /*********************User Start*************************/
-    //set_posestamp(odomAftMapped.pose);
-    user_set_odomstamp(odomAftMapped);
+    set_posestamp(odomAftMapped.pose);
+    // user_set_odomstamp(odomAftMapped);
     /*********************User End***************************/
     pubOdomAftMapped.publish(odomAftMapped);
     auto P = kf.get_P();

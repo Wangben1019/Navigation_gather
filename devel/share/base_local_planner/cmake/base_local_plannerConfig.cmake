@@ -67,14 +67,14 @@ set(base_local_planner_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("TRUE" STREQUAL "TRUE")
-  set(base_local_planner_SOURCE_PREFIX /home/wang/2dnav_ws/src/navigation/base_local_planner)
-  set(base_local_planner_DEVEL_PREFIX /home/wang/2dnav_ws/devel)
+  set(base_local_planner_SOURCE_PREFIX /home/uaspc01/Navigation_gather/src/navigation/base_local_planner)
+  set(base_local_planner_DEVEL_PREFIX /home/uaspc01/Navigation_gather/devel)
   set(base_local_planner_INSTALL_PREFIX "")
   set(base_local_planner_PREFIX ${base_local_planner_DEVEL_PREFIX})
 else()
   set(base_local_planner_SOURCE_PREFIX "")
   set(base_local_planner_DEVEL_PREFIX "")
-  set(base_local_planner_INSTALL_PREFIX /home/wang/2dnav_ws/install)
+  set(base_local_planner_INSTALL_PREFIX /home/uaspc01/Navigation_gather/install)
   set(base_local_planner_PREFIX ${base_local_planner_INSTALL_PREFIX})
 endif()
 
@@ -91,9 +91,9 @@ endif()
 # flag project as catkin-based to distinguish if a find_package()-ed project is a catkin project
 set(base_local_planner_FOUND_CATKIN_PROJECT TRUE)
 
-if(NOT "/home/wang/2dnav_ws/devel/include;/home/wang/2dnav_ws/src/navigation/base_local_planner/include " STREQUAL " ")
+if(NOT "/home/uaspc01/Navigation_gather/devel/include;/home/uaspc01/Navigation_gather/src/navigation/base_local_planner/include " STREQUAL " ")
   set(base_local_planner_INCLUDE_DIRS "")
-  set(_include_dirs "/home/wang/2dnav_ws/devel/include;/home/wang/2dnav_ws/src/navigation/base_local_planner/include")
+  set(_include_dirs "/home/uaspc01/Navigation_gather/devel/include;/home/uaspc01/Navigation_gather/src/navigation/base_local_planner/include")
   if(NOT " " STREQUAL " ")
     set(_report "Check the issue tracker '' and consider creating a ticket if the problem has not been reported yet.")
   elseif(NOT "http://wiki.ros.org/base_local_planner " STREQUAL " ")
@@ -110,7 +110,7 @@ if(NOT "/home/wang/2dnav_ws/devel/include;/home/wang/2dnav_ws/src/navigation/bas
         message(FATAL_ERROR "Project 'base_local_planner' specifies '${idir}' as an include dir, which is not found.  It does not exist in '${include}'.  ${_report}")
       endif()
     else()
-      message(FATAL_ERROR "Project 'base_local_planner' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/wang/2dnav_ws/src/navigation/base_local_planner/${idir}'.  ${_report}")
+      message(FATAL_ERROR "Project 'base_local_planner' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/uaspc01/Navigation_gather/src/navigation/base_local_planner/${idir}'.  ${_report}")
     endif()
     _list_append_unique(base_local_planner_INCLUDE_DIRS ${include})
   endforeach()
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/wang/2dnav_ws/devel/lib;/home/wang/2dnav_ws/devel/lib;/opt/ros/noetic/lib)
+    foreach(path /home/uaspc01/Navigation_gather/devel/lib;/home/uaspc01/Navigation_gather/devel/lib;/opt/ros/noetic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

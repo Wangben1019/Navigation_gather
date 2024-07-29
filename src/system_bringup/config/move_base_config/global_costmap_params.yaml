@@ -3,11 +3,17 @@ global_costmap:
   robot_base_frame: base_link_ugv #机器人坐标系
   # 以此实现坐标变换
 
-  update_frequency: 1.0 #代价地图更新频率
-  publish_frequency: 1.0 #代价地图的发布频率
-  transform_tolerance: 1.0 #等待坐标变换发布信息的超时时间
+  update_frequency: 5.0 #代价地图更新频率
+  publish_frequency: 10.0 #代价地图的发布频率
+  transform_tolerance: 0.5 #等待坐标变换发布信息的超时时间
 
-  static_map: false # 是否使用一个地图或者地图服务器来初始化全局代价地图，如果不使用静态地图，这个参数为false.
+  inflation_radius: 1.0
 
-  origin_x: -5
-  origin_y: -5
+  # static_map: false # 是否使用一个地图或者地图服务器来初始化全局代价地图，如果不使用静态地图，这个参数为false.
+  rolling_window: true
+
+  # origin_x: -5.0
+  # origin_y: -5.0
+  plugins:
+    - {name: obstacle_layer,          type: "costmap_2d::VoxelLayer"}
+    - {name: inflation_layer,         type: "costmap_2d::InflationLayer"}

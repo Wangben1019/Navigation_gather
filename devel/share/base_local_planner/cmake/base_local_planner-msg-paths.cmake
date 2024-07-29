@@ -1,4 +1,4 @@
 # generated from genmsg/cmake/pkg-msg-paths.cmake.develspace.in
 
-set(base_local_planner_MSG_INCLUDE_DIRS "/home/wang/2dnav_ws/src/navigation/base_local_planner/msg")
+set(base_local_planner_MSG_INCLUDE_DIRS "/home/uaspc01/Navigation_gather/src/navigation/base_local_planner/msg")
 set(base_local_planner_MSG_DEPENDENCIES std_msgs)

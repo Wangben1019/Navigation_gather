@@ -5,7 +5,7 @@
 
     <node pkg="system_bringup" type="receive_odom" name="receive_odom" output="screen" />
 
-    <node pkg="tf" type="static_transform_publisher" name="LidarVehicleTransPublisher" args="0 0 0 0 0 0 base_link_ugv livox_frame 1000"/>
+    <node pkg="tf" type="static_transform_publisher" name="LidarVehicleTransPublisher" args="0 0 0.4 0 0 0 base_link_ugv livox_frame 1000"/>
 
     <include file="$(find system_bringup)/launch/3d_nav/pointcloud2laserscan.launch" />
 
