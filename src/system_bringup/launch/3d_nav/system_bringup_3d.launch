@@ -13,7 +13,9 @@
 
     <include file="$(find system_bringup)/launch/3d_nav/move_base_bringup.launch" />
 
-    <!-- <node pkg="user_package" type="control_chassis" name="control_chassis" output="screen" /> -->
+    <include file="$(find ps3joy)/launch/ps3.launch" />
+
+    <node pkg="user_package" type="control_chassis" name="control_chassis" output="screen" />
 
     <node launch-prefix="nice" pkg="rviz" type="rviz" name="rvizsystem" args="-d $(find system_bringup)/rviz/system_3d.rviz" />
 </launch>
